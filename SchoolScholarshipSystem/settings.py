@@ -89,6 +89,7 @@ DATABASES = {
 }
 
 
+LOGIN_URL = '/login/'
 
 
 
