@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-y4f9o+ud#lyzc!_(n_v-e^sz+io#k$$rc1#l08og5q3$a)kc!0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["schoolscholarshipsystem.onrender.com"]
+
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -76,16 +77,13 @@ WSGI_APPLICATION = 'SchoolScholarshipSystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+import dj_database_url
+import os
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',  # Supabase default
-        'USER': 'postgres',
-        'PASSWORD': 'alcarezsalazar1288',
-        'HOST': 'db.stgsodoujulkfvxijujj.supabase.co',  # e.g. db.abcd.supabase.co
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
+
 
 
 
