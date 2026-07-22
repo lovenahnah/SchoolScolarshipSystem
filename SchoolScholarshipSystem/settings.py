@@ -78,14 +78,15 @@ WSGI_APPLICATION = 'SchoolScholarshipSystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'scholarship_db',
-        'USER': 'root',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',  # Supabase default
+        'USER': 'postgres',
+        'PASSWORD': 'alcarezsalazar1288',
+        'HOST': 'db.stgsodoujulkfvxijujj.supabase.co',  # e.g. db.abcd.supabase.co
+        'PORT': '5432',
     }
 }
+
 
 
 
