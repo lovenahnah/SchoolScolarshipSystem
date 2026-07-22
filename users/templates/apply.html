@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply Scholarship</title>
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+</head>
+<body>
+    <div class="card">
+        <h2>Apply for Scholarship</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <label>Scholarship Type</label>
+            <select name="scholarship_type" required>
+                <option value="academic">Academic/Merit</option>
+                <option value="need">Need-Based</option>
+                <option value="government">Government-Funded</option>
+                <option value="private">Private/Corporate</option>
+                <option value="athletic">Athletic/Skill-Based</option>
+            </select>
+
+            <label>Upload File (PDF, DOCX, etc.)</label>
+            <input type="file" name="file_upload" accept=".pdf,.doc,.docx">
+
+            <label>Remarks</label>
+            <textarea name="remarks" rows="4"></textarea>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Application</title>
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+</head>
+<body>
+    <div class="card">
+        <h2>Review Application</h2>
+        <p><strong>Student:</strong> {{ application.student.username }}</p>
+        <p><strong>Scholarship Type:</strong> {{ application.get_scholarship_type_display }}</p>
+        <p><strong>Current Status:</strong> {{ application.status }}</p>
+        <p>
+            <strong>Uploaded File:</strong>
+            {% if application.file_upload %}
+                <a href="{{ application.file_upload.url }}" target="_blank">Download</a>
+            {% else %}
+                No file uploaded
+            {% endif %}
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+            <label>Status</label>
+            <select name="status">
+                <option value="Pending" {% if application.status == "Pending" %}selected{% endif %}>Pending</option>
+                <option value="Approved" {% if application.status == "Approved" %}selected{% endif %}>Approved</option>
+                <option value="Rejected" {% if application.status == "Rejected" %}selected{% endif %}>Rejected</option>
+            </select>
+
+            <label>Remarks</label>
+            <textarea name="remarks">{{ application.remarks }}</textarea>
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>
